@@ -32,9 +32,9 @@ RUN pip install aegea
 
 # Install cellranger 5.0.1
 #RUN cd /opt/ && \
-	wget -O cellranger-5.0.1.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-5.0.1.tar.gz?Expires=1608491037&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1leHAvY2VsbHJhbmdlci01LjAuMS50YXIuZ3oiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2MDg0OTEwMzd9fX1dfQ__&Signature=mDpEPGIDLx7cgyp1xIU0eGE43Isla3G9gZzSXoKpEo8HHxOMpcgjJCb2h-pp7dtOSTyclqvICdnld0wnp23B7hOEwhK4IRCB6bqGW3shMWbywF-eht0-vMPS0QymdBZRf07vliIJUwX0yxktw4-ExQWa8eaDgHI8KRkL59HsNwSv~4m3BNl83WH4e99FDTD44IXeiPFywdgWE6LgfcHcHqVXvM6pr7JaQm-is6P1JZHsdtFrb0aVogTgrZOqcWqybZSPAdDUOGd1xjOvTrX~uKW1meqsgUBXZeahOwVWGnK6S1k-Hz7V-oqLs2Xa16lY0nX0RIOXt8pmzzktPjq1AQ__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA" && \	
-	tar -xzvf cellranger-5.0.1.tar.gz && \
-	rm -f cellranger-5.0.1.tar.gz
+#	wget -O cellranger-5.0.1.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-5.0.1.tar.gz?Expires=1608491037&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1leHAvY2VsbHJhbmdlci01LjAuMS50YXIuZ3oiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2MDg0OTEwMzd9fX1dfQ__&Signature=mDpEPGIDLx7cgyp1xIU0eGE43Isla3G9gZzSXoKpEo8HHxOMpcgjJCb2h-pp7dtOSTyclqvICdnld0wnp23B7hOEwhK4IRCB6bqGW3shMWbywF-eht0-vMPS0QymdBZRf07vliIJUwX0yxktw4-ExQWa8eaDgHI8KRkL59HsNwSv~4m3BNl83WH4e99FDTD44IXeiPFywdgWE6LgfcHcHqVXvM6pr7JaQm-is6P1JZHsdtFrb0aVogTgrZOqcWqybZSPAdDUOGd1xjOvTrX~uKW1meqsgUBXZeahOwVWGnK6S1k-Hz7V-oqLs2Xa16lY0nX0RIOXt8pmzzktPjq1AQ__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA" && \	
+#	tar -xzvf cellranger-5.0.1.tar.gz && 
+#	rm -f cellranger-5.0.1.tar.gz
 
 # path
 # ENV PATH /opt/cellranger-5.0.1:$PATH
