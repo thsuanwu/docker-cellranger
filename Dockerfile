@@ -31,38 +31,10 @@ RUN conda install awscli-cwlogs
 RUN pip install aegea
 
 # Install cellranger 5.0.1
-#RUN cd /opt/ && \
-#	wget -O cellranger-5.0.1.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-5.0.1.tar.gz?Expires=1608491037&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1leHAvY2VsbHJhbmdlci01LjAuMS50YXIuZ3oiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2MDg0OTEwMzd9fX1dfQ__&Signature=mDpEPGIDLx7cgyp1xIU0eGE43Isla3G9gZzSXoKpEo8HHxOMpcgjJCb2h-pp7dtOSTyclqvICdnld0wnp23B7hOEwhK4IRCB6bqGW3shMWbywF-eht0-vMPS0QymdBZRf07vliIJUwX0yxktw4-ExQWa8eaDgHI8KRkL59HsNwSv~4m3BNl83WH4e99FDTD44IXeiPFywdgWE6LgfcHcHqVXvM6pr7JaQm-is6P1JZHsdtFrb0aVogTgrZOqcWqybZSPAdDUOGd1xjOvTrX~uKW1meqsgUBXZeahOwVWGnK6S1k-Hz7V-oqLs2Xa16lY0nX0RIOXt8pmzzktPjq1AQ__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA" && \	
-#	tar -xzvf cellranger-5.0.1.tar.gz && 
-#	rm -f cellranger-5.0.1.tar.gz
-
-# path
-# ENV PATH /opt/cellranger-5.0.1:$PATH
-
-# Taken from: https://github.com/klarman-cell-observatory/cumulus/blob/master/docker/cellranger/5.0.0/Dockerfile
-RUN apt-get update && \
-    apt-get install --no-install-recommends -y alien unzip build-essential dpkg-dev curl gnupg lsb-release procps python3 python3-pip && \
-    export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
-    echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
-    apt-get update && apt-get install -y google-cloud-sdk=290.0.0-0
-
-RUN pip3 install pandas && \
-    pip3 install xlsxwriter
-
-RUN mkdir /software
-ADD https://raw.githubusercontent.com/klarman-cell-observatory/cumulus/master/docker/monitor_script.sh /software
-ADD cellranger-5.0.0.tar /software
-
-#ADD bcl2fastq2-v2-20-0-linux-x86-64.zip /software/
-#RUN unzip -d /software/ /software/bcl2fastq2-v2-20-0-linux-x86-64.zip && alien -i /software/bcl2fastq2-v2.20.0.422-Linux-x86_64.rpm && rm /software/bcl2fastq2-v2*
-
-RUN apt-get -qq -y remove alien curl gnupg python3-pip unzip && \
-    apt-get -qq -y autoremove && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /var/log/dpkg.log && \
-    rm /usr/bin/python && ln -s /usr/bin/python3 /usr/bin/python
-
-RUN chmod a+rx /software/monitor_script.sh
-ENV PATH=/software:/software/cellranger-5.0.0:$PATH
-ENV TMPDIR=/tmp
+RUN cd /opt/ && \
+	wget -O cellranger-5.0.1.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-5.0.1.tar.gz?Expires=1609218020&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1leHAvY2VsbHJhbmdlci01LjAuMS50YXIuZ3oiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2MDkyMTgwMjB9fX1dfQ__&Signature=PCPHUVLWye~Q1H8xA955lrMR2zYYwlbEezqJJxAkHUVb~OqLz8pmb-32gLvPg833EbeTfn4KNK7Jm9H4PY0skAbrLRYE1xjRyk0QkF4ZKL3AnOyCr3IhIGqsxicCnTPXNcn5q3rH2dWb1HAiPcodsbdz~58TcjfcYCfIySzAhrmui0BIClwy417XaUbITqQXxWJ1MPAcxzf086J8xiaDle0ARUZfBkqYf8QQzunBiAQux4ywiNazYoGbS90cF-H~ccAdzhtj-rNk3Lb1U95EInFy3uWHjAgSHjCSrNfT9ksjHhx8L08IGuMh-GWrGK0WLFAVdvD7NEuagM9JE6L-fg__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA" && \
+	tar -xzvf cellranger-5.0.1.tar.gz && \
+    rm -f cellranger-5.0.1.tar.gz
+RUN cp /opt/cellranger-5.0.1/bin/sc_rna/* /usr/local/bin
+ENV PATH="/opt/cellranger-5.0.1:${PATH}"
+RUN echo "export PATH=/opt/cellranger-5.0.1:${PATH}" >> ~/.bashrc
