@@ -36,5 +36,8 @@ RUN cd /opt/ && \
 	tar -xzvf cellranger-5.0.1.tar.gz && \
     rm -f cellranger-5.0.1.tar.gz
 RUN cp /opt/cellranger-5.0.1/bin/sc_rna/* /usr/local/bin
+RUN cp /opt/cellranger-5.0.1/bin/rna/* /usr/local/bin
+RUN cp /opt/cellranger-5.0.1/bin/tenkit/* /usr/local/bin
+
 ENV PATH="/opt/cellranger-5.0.1:${PATH}"
 RUN echo "export PATH=/opt/cellranger-5.0.1:${PATH}" >> ~/.bashrc
